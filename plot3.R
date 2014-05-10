@@ -13,9 +13,10 @@ p[p==5]<-"Thursday"
 p[p==6]<-"Friday"
 hpc1$weekday<-p
 hpc1$Full<-as.POSIXct(paste(hpc1$Date, hpc1$Time), format="%Y-%m-%d %H:%M:%S")
+png(filename = "plot3.png", width = 480, height = 480)
 plot(hpc1$Full,hpc[,7],type="l",ylab="Energy sub meeting",xlab=" ")
-points(hpc1$Full,hpc[,9],type="l",col="blue")
 points(hpc1$Full,hpc[,8],type="l",col="red")
-legend("topright",legend=c("Sub_meeting_1","Sub_meeting_2","Sub_meeting_3"),col=c("black","red","blue"),lty=c(1,1,1),cex=0.5,pt.cex=5,lwd=2)
-
+points(hpc1$Full,hpc[,9],type="l",col="blue")
+legend("topright",cex=0.8, lty = 1, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+dev.off()
 
